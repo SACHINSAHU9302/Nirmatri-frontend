@@ -1,9 +1,9 @@
 "use client";
 
+import { Button } from "@/app/components/ui/button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { useTheme } from '@/app/contexts/ThemeContext';
 
 export default function SellerLayout({
   children,
@@ -12,7 +12,7 @@ export default function SellerLayout({
 }) {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { effectiveTheme } = useTheme();
+  
 
   return (
     <div className="min-h-screen flex bg-slate-50 dark:bg-gray-900 transition-colors">
@@ -97,7 +97,7 @@ export default function SellerLayout({
         {/* Mobile Header (Enhanced Glassmorphism) */}
         <header className="md:hidden bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 sticky top-0 z-40">
           <div className="flex items-center justify-between px-6 py-4">
-            <button
+            <Button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="p-2 -ml-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
             >
@@ -108,7 +108,7 @@ export default function SellerLayout({
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 )}
               </svg>
-            </button>
+            </Button>
             <h2 className="text-lg font-bold text-gray-900 dark:text-white">Nirmatri</h2>
             <div className="w-8" />
           </div>

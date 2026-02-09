@@ -66,33 +66,7 @@ export function OrdersSection() {
         </p>
       </div>
 
-      {/* ================= STATS ================= */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        {[
-          { label: "Total Orders", value: 12 },
-          { label: "In Progress", value: 2 },
-          { label: "Delivered", value: 10 },
-        ].map((stat, i) => (
-          <Card
-            key={i}
-            className="
-              bg-gradient-to-br from-orange-50 to-orange-100/40
-              dark:from-[#16181c] dark:to-[#0f0f10]
-              border-orange-200/60 dark:border-white/10
-            "
-          >
-            <CardContent className="py-6 text-center">
-              <div className="text-3xl font-bold text-orange-600 dark:text-blue-400">
-                {stat.value}
-              </div>
-              <div className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                {stat.label}
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-
+      
       {/* ================= ORDERS ================= */}
       <div className="space-y-6">
         {orders.map((order) => {

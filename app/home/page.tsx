@@ -12,7 +12,7 @@ import { ThemeProvider } from "@/app/contexts/ThemeContext";
 export default function Page() {
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+      <div className="min-h-screen bg-black transition-colors duration-300">
         
         {/* ✅ Navbar + Account Sidebar */}
         <HeaderWrapper />

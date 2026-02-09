@@ -103,7 +103,7 @@ export function WishlistSection() {
                 )}
     
                 {/* REMOVE HEART */}
-                <button
+                <Button
                   className="
                     absolute top-3 right-3 w-9 h-9 rounded-full
                     bg-white/80 dark:bg-[#0f0f10]/80 backdrop-blur
@@ -115,7 +115,7 @@ export function WishlistSection() {
                   "
                 >
                   <Heart className="w-4 h-4 fill-current" />
-                </button>
+                </Button>
               </div>
 
               {/* CONTENT */}

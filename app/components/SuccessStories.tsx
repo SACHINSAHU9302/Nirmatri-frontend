@@ -36,7 +36,7 @@ export function SuccessStories() {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl mb-4">Success Stories</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Don't just take our word for it – hear from our satisfied clients
+            Donot just take our word for it – hear from our satisfied clients
           </p>
         </div>
 
@@ -54,7 +54,7 @@ export function SuccessStories() {
 
               {/* Quote */}
               <p className="text-gray-700 mb-6 leading-relaxed italic">
-                "{testimonial.quote}"
+                {testimonial.quote}
               </p>
 
               {/* Author */}

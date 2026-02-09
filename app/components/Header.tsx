@@ -2,8 +2,6 @@
 
 import {
   Search,
-  ShoppingCart,
-  Heart,
   LogIn,
 } from "lucide-react";
 import Link from "next/link";
@@ -11,10 +9,8 @@ import { useEffect, useState } from "react";
 
 import { Button } from "@/app/components/ui/button";
 import { Input } from "@/app/components/ui/input";
-import { Badge } from "@/app/components/ui/badge";
-import { ThemeToggle } from "@/app/components/ThemeToggle";
 import { Sheet, SheetContent } from "@/app/components/ui/sheet";
-
+import  NirmatriLogo  from "@/app/components/Nirmatri";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -23,7 +19,6 @@ import {
 } from "@/app/components/ui/dropdown-menu";
 
 export function Header() {
-  const [cartCount] = useState(3);
   const [showTopBar, setShowTopBar] = useState(true);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
@@ -36,7 +31,7 @@ export function Header() {
     <>
       {/* MOBILE SEARCH */}
       <Sheet open={isSearchOpen} onOpenChange={setIsSearchOpen}>
-        <SheetContent side="top" className="p-4 bg-white dark:bg-gray-950">
+        <SheetContent side="top" className="p-4 bg-[#6968A6]">
           <form action="/search" className="flex gap-2">
             <Input
               autoFocus
@@ -60,11 +55,7 @@ export function Header() {
         className="
           sticky top-0 z-50
           backdrop-blur-xl
-          bg-gradient-to-r
-          from-[#CF9893]/30 via-white/70 to-[#6968A6]/30
-          dark:bg-gradient-to-r dark:from-gray-950 dark:to-gray-900
-          border-b border-[#6968A6]/20 dark:border-white/15
-          shadow-sm
+          bg-black
         "
       >
         {/* TOP BAR (unchanged, auto hides) */}
@@ -81,13 +72,12 @@ export function Header() {
         {/* MAIN HEADER — SLIM */}
         <div className="h-14">
           <div className="max-w-7xl mx-auto h-full px-4 flex items-center gap-3">
-            
             {/* LOGO */}
-            <img
-              src="/bgnirmatri.png"
-              alt="Nirmatri Logo"
-              className="h-9 w-auto object-contain"
-            />
+            <div className="flex-shrink-0 transform -translate-x-8 sm:-translate-x-1 md:translate-x-1">
+              <Link href="/" className="flex items-center">
+                <NirmatriLogo />
+              </Link>
+            </div>
 
             {/* SEARCH (DESKTOP) */}
             <div className="hidden md:flex flex-1 justify-center">
@@ -131,8 +121,6 @@ export function Header() {
                 <Search className="h-5 w-5" />
               </Button>
 
-              <ThemeToggle />
-
               {/* LOGIN */}
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -170,8 +158,6 @@ export function Header() {
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
-
-             
             </div>
 
           </div>

@@ -39,7 +39,7 @@ export function WhyShopWithUs() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl mb-2 dark:text-gray-100">Why Shop With Nirmatri</h2>
-          <p className="text-gray-600 dark:text-gray-400">More than just shopping - it's about making an impact</p>
+          <p className="text-gray-600 dark:text-gray-400">More than just shopping - its about making an impact</p>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">

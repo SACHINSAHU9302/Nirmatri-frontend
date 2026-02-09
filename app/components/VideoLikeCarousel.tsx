@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, Play, Heart, Sprout } from "lucide-react";
+
+import { ChevronLeft, ChevronRight, Heart } from "lucide-react";
 import { Button } from "@/app/components/ui/button";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 
@@ -50,7 +51,7 @@ export function VideoLikeCarousel() {
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
 
   return (
-    <section className="relative h-[300px] md:h-[390px] overflow-hidden bg-[#FAF9F6]">
+    <section className="relative h-[300px] md:h-[280px] overflow-hidden bg-[#FAF9F6]">
       {/* Slides */}
       {slides.map((slide, index) => (
         <div
@@ -126,36 +127,26 @@ export function VideoLikeCarousel() {
 
       {/* Navigation Arrows (Artisanal Style) */}
       <div className="absolute bottom-12 right-12 flex gap-4 z-20">
-        <button
+
+    
+        <Button
           onClick={prevSlide}
           className="bg-white/10 backdrop-blur-md hover:bg-amber-600 text-white p-4 rounded-full border border-white/20 transition-all duration-300"
         >
           <ChevronLeft className="h-5 w-5" />
-        </button>
 
-        <button
+      
+
+        
+        </Button>
+
+        <Button
           onClick={nextSlide}
           className="bg-white/10 backdrop-blur-md hover:bg-amber-600 text-white p-4 rounded-full border border-white/20 transition-all duration-300"
         >
           <ChevronRight className="h-5 w-5" />
-        </button>
+        </Button>
       </div>
-
-      {/* Modern Number Indicators */}
-      {/* <div className="absolute bottom-12 left-12 flex items-center gap-6 z-20">
-         <span className="text-white font-serif text-4xl italic opacity-50">0{currentSlide + 1}</span>
-         <div className="flex gap-2">
-            {slides.map((_, index) => (
-              <div
-                key={index}
-                className={`h-1 transition-all duration-500 rounded-full ${
-                  index === currentSlide ? "bg-amber-500 w-12" : "bg-white/30 w-4"
-                }`}
-              />
-            ))}
-         </div>
-         <span className="text-white font-serif text-xl opacity-30">0{slides.length}</span>
-      </div> */}
 
       {/* Progress Line */}
       <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/10 z-30">

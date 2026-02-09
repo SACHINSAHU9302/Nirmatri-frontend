@@ -15,7 +15,7 @@ import { ReturnsSection } from "@/app/components/userprofile/sections/ReturnsSec
 import { NotificationsSection } from "@/app/components/userprofile/sections/NotificationsSection";
 import { SupportSection } from "@/app/components/userprofile/sections/SupportSection";
 
-const UserDashboard = () => {
+const UserDashboard = () => { 
   const [activeSection, setActiveSection] = useState("profile");
 
   const renderSection = () => {

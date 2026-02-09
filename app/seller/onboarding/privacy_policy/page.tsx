@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { useTheme } from '@/app/contexts/ThemeContext';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -15,7 +14,6 @@ export default function SellerPrivacyPolicyPage() {
   // ============================================
   // STATE & HOOKS
   // ============================================
-  const { effectiveTheme } = useTheme();
   const router = useRouter();
   const [activeSection, setActiveSection] = useState<string | null>(null);
 

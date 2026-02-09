@@ -53,7 +53,7 @@ export function CategoryShowcase() {
       : categories.filter((c) => c.name === activeFilter);
 
   return (
-    <section className="py-12 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-950 transition-colors">
+    <section className="py-12 px-4 sm:px-7 lg:px-8 bg-white dark:bg-gray-950 transition-colors">
       <div className="max-w-7xl mx-auto">
 
         {/* HEADER */}

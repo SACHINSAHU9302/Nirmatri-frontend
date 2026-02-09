@@ -5,14 +5,15 @@ import { useRouter } from "next/navigation";
 import {
   User,
   ShoppingBag,
-  MapPin,
+
   Heart,
   ShoppingCart,
   CreditCard,
   RefreshCcw,
   LogOut,
   ChevronRight,
-  X,
+  Settings,
+
 } from "lucide-react";
 
 /* ===================== TYPES ===================== */
@@ -79,19 +80,21 @@ export default function AccountSidebar({
           "
         >
           <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-            Account
+            My Account
           </h2>
 
           <button
-            onClick={onClose}
-            className="
-              rounded-full p-2
-              hover:bg-gray-100 dark:hover:bg-gray-800
-              transition
-            "
-          >
-            <X className="h-5 w-5" />
-          </button>
+  onClick={onClose}
+  aria-label="Close modal"
+  className="
+    rounded-full p-2
+    hover:bg-gray-100 dark:hover:bg-gray-800
+    transition
+  "
+>
+  ✕
+</button>
+
         </div>
 
         {/* ================= CONTENT ================= */}
@@ -132,11 +135,11 @@ export default function AccountSidebar({
           <div className="mt-6 space-y-1">
             <MenuItem icon={<User />} label="My Profile" onClick={() => onSelect?.("profile")} />
             <MenuItem icon={<ShoppingBag />} label="My Orders" onClick={() => onSelect?.("orders")} />
-            <MenuItem icon={<MapPin />} label="Saved Addresses" onClick={() => onSelect?.("addresses")} />
             <MenuItem icon={<Heart />} label="Wishlist" onClick={() => onSelect?.("wishlist")} />
             <MenuItem icon={<ShoppingCart />} label="Cart" onClick={() => onSelect?.("cart")} />
             <MenuItem icon={<CreditCard />} label="Payments" onClick={() => onSelect?.("payments")} />
             <MenuItem icon={<RefreshCcw />} label="Returns & Refunds" onClick={() => onSelect?.("returns")} />
+            <MenuItem icon={<Settings/>} label="Settings" onClick={() => onSelect?.("settingsSection")} />
           </div>
 
           {/* ================= LOGOUT ================= */}
@@ -196,5 +199,8 @@ function MenuItem({
 
       <ChevronRight className="h-4 w-4 opacity-40 group-hover:opacity-100" />
     </div>
+    
   );
 }
+
+

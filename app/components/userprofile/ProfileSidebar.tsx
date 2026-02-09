@@ -12,6 +12,7 @@ import {
   HelpCircle,
   LogOut,
   ChevronRight,
+  Settings,
 } from "lucide-react";
 import { cn } from "@/app/components/ui/utils";
 import { useRouter } from "next/navigation";
@@ -31,6 +32,7 @@ const menuItems = [
   { id: "returns", label: "Returns & Refunds", icon: RotateCcw },
   { id: "notifications", label: "Notifications", icon: Bell },
   { id: "support", label: "Help & Support", icon: HelpCircle },
+  { id: "settings", label: "Settings", icon: Settings },
 ];
 
 export function ProfileSidebar({
@@ -74,7 +76,7 @@ export function ProfileSidebar({
         </div>
         <div>
           <h2 className="font-semibold text-gray-900 dark:text-gray-100">
-            Rahul Kumar
+            Raghav Kumar
           </h2>
           <p className="text-sm text-gray-600 dark:text-gray-400">
             +91 98765 43210

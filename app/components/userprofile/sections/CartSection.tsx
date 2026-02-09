@@ -99,24 +99,27 @@ export function CartSection() {
                     <div className="flex items-center justify-between mt-3">
                       {/* Quantity */}
                       <div className="flex items-center gap-2 bg-orange-50 dark:bg-[#1f232a] rounded-lg p-1">
-                        <button
-                          onClick={() => updateQuantity(item.id, -1)}
-                          className="w-8 h-8 rounded-md hover:bg-orange-100 dark:hover:bg-white/10 flex items-center justify-center"
-                        >
-                          <Minus className="w-4 h-4" />
-                        </button>
+  <button
+    onClick={() => updateQuantity(item.id, -1)}
+    aria-label="Decrease quantity"
+    className="w-8 h-8 rounded-md hover:bg-orange-100 dark:hover:bg-white/10 flex items-center justify-center"
+  >
+    <Minus className="w-4 h-4" />
+  </button>
 
-                        <span className="w-8 text-center font-medium text-gray-900 dark:text-gray-100">
-                          {item.quantity}
-                        </span>
+  <span className="w-8 text-center font-medium text-gray-900 dark:text-gray-100">
+    {item.quantity}
+  </span>
 
-                        <button
-                          onClick={() => updateQuantity(item.id, 1)}
-                          className="w-8 h-8 rounded-md hover:bg-orange-100 dark:hover:bg-white/10 flex items-center justify-center"
-                        >
-                          <Plus className="w-4 h-4" />
-                        </button>
-                      </div>
+  <button
+    onClick={() => updateQuantity(item.id, 1)}
+    aria-label="Increase quantity"
+    className="w-8 h-8 rounded-md hover:bg-orange-100 dark:hover:bg-white/10 flex items-center justify-center"
+  >
+    <Plus className="w-4 h-4" />
+  </button>
+</div>
+
 
                       {/* Price */}
                       <div className="text-right">
@@ -131,8 +134,9 @@ export function CartSection() {
                   </div>
 
                   {/* Remove */}
-                  <button
-                    onClick={() => removeItem(item.id)}
+  <button
+    onClick={() => removeItem(item.id)}
+    aria-label="Remove item"
                     className="p-2 text-gray-400 hover:text-red-500"
                   >
                     <Trash2 className="w-5 h-5" />

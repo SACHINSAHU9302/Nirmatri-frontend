@@ -1,15 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useTheme } from '@/app/contexts/ThemeContext';
-
 
 export default function SellerDashboardPage() {
   // ============================================
   // THEME HOOK
   // ============================================
-  const { effectiveTheme } = useTheme();
+
 
   // ============================================
   // SELLER DATA
