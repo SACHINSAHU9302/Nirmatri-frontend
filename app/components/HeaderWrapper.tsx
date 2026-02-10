@@ -6,7 +6,7 @@ import AccountSidebar from "@/app/components/AccountSidebar";
 import LeftPanel from "@/app/components/LeftPanel";
 
 /* SECTIONS */
-import MyProfileSection from "@/app/components/userprofile/sections/MyProfileSection";
+import MyProfileSection  from "@/app/components/userprofile/sections/MyProfileSection";
 import { OrdersSection } from "@/app/components/userprofile/sections/OrdersSection";
 import { AddressesSection } from "@/app/components/userprofile/sections/AddressesSection";
 import { WishlistSection } from "@/app/components/userprofile/sections/WishlistSection";
@@ -15,6 +15,7 @@ import { PaymentsSection } from "@/app/components/userprofile/sections/PaymentsS
 import { ReturnsSection } from "@/app/components/userprofile/sections/ReturnsSection";
 import { NotificationsSection } from "@/app/components/userprofile/sections/NotificationsSection";
 import { SupportSection } from "@/app/components/userprofile/sections/SupportSection";
+import  SettingsSection  from "@/app/components/userprofile/sections/SettingsSection";
 
 type Section =
   | "profile"
@@ -25,7 +26,8 @@ type Section =
   | "payments"
   | "returns"
   | "notifications"
-  | "support";
+  | "support"
+  | "settings";
 
 export default function HeaderWrapper() {
   const [menuOpen, setMenuOpen] = useState(false);   // Sidebar
@@ -53,7 +55,8 @@ export default function HeaderWrapper() {
       case "returns": return <ReturnsSection />;
       case "notifications": return <NotificationsSection />;
       case "support": return <SupportSection />;
-      default: return <MyProfileSection />;
+      case "settings": return <SettingsSection />;
+      // default: return <MyProfileSection />;
     }
   };
 

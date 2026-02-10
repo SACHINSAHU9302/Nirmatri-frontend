@@ -1,7 +1,4 @@
 "use client";
-
-
-
 import { 
   User, 
   Package, 
@@ -13,8 +10,7 @@ import {
   Bell, 
   HelpCircle, 
   LogOut,
-  Menu,
-  X
+  Menu
 } from "lucide-react";
 import { cn } from "@/app/components/ui/utils";
 import { useState } from "react";
