@@ -16,7 +16,7 @@ export default function Page() {
         <VideoLikeCarousel />
         <CategoryShowcase />
         <SponsoredProducts />
-
+ 
         <ArtisanSpotlight />
         <WhyShopWithUs />
         <NirmatriFooter />
@@ -24,3 +24,4 @@ export default function Page() {
     </ThemeProvider>
   );
 }
+

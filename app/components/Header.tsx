@@ -1,39 +1,29 @@
 "use client";
 
-import { Search, LogIn, Menu } from "lucide-react";
-import { ShoppingCart } from "lucide-react";
-
+import { Search, LogIn, Menu, ShoppingCart } from "lucide-react";
 import Link from "next/link";
-import {
-  useEffect,
-  useRef,
-  useState,
-  useTransition,
-} from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import { useRouter, usePathname } from "next/navigation";
 
 import { Button } from "@/app/components/ui/button";
 import { Input } from "@/app/components/ui/input";
 import { Sheet, SheetContent } from "@/app/components/ui/sheet";
 import NirmatriLogo from "@/app/components/Nirmatri";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/app/components/ui/dropdown-menu";
-import path from "path";
 
-/* 🔹 PROPS */
 type HeaderProps = {
   onUserClick?: () => void;
 };
 
+
 export function Header({ onUserClick }: HeaderProps) {
   const [showTopBar, setShowTopBar] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-const [cartCount, setCartCount] = useState<number>(0);
-
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
   const [sheetSearchOpen, setSheetSearchOpen] = useState(false);
 
@@ -43,14 +33,11 @@ const [cartCount, setCartCount] = useState<number>(0);
   const pathname = usePathname();
   const searchRef = useRef<HTMLDivElement>(null);
 
-  /* 🔐 AUTH CHECK */
-  useEffect(() => {
-  const checkAuth = () => {
-    setIsLoggedIn(localStorage.getItem("loggedIn") === "true");
-  };
-
-  checkAuth(); // initial
-}, [pathname]); // 🔥 route change pe re-check
+  /* 🔥 ROUTE CHECKS */
+  const isHomePage = pathname.startsWith("/home");
+  const hideHeader =
+    pathname.startsWith("/seller") ||
+    pathname.startsWith("/userauth");
 
   /* ⏱️ TOP BAR AUTO HIDE */
   useEffect(() => {
@@ -66,7 +53,7 @@ const [cartCount, setCartCount] = useState<number>(0);
     });
   }, [pathname]);
 
-  /* 👆 CLICK OUTSIDE (MOBILE SEARCH) */
+  /* 👆 CLICK OUTSIDE */
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (
@@ -77,10 +64,12 @@ const [cartCount, setCartCount] = useState<number>(0);
         setMobileSearchOpen(false);
       }
     };
+
     document.addEventListener("mousedown", handleClickOutside);
     return () =>
       document.removeEventListener("mousedown", handleClickOutside);
   }, [mobileSearchOpen]);
+
 
   /* ❌ LOGIN / AUTH PAGES PE HEADER HIDE */
 if (
@@ -98,13 +87,24 @@ if (
     router.replace("/");
   };
 
+  /* ❌ AFTER ALL HOOKS → SAFE RETURN */
+  if (hideHeader) {
+    return null;
+  }
+
+
   return (
     <>
       {/* 🔍 MOBILE SEARCH SHEET */}
       <Sheet open={sheetSearchOpen} onOpenChange={setSheetSearchOpen}>
         <SheetContent side="top" className="p-4 bg-[#6968A6]">
           <form action="/search" className="flex gap-2">
-            <Input autoFocus name="q" type="search" placeholder="Search products..." />
+            <Input
+              autoFocus
+              name="q"
+              type="search"
+              placeholder="Search products..."
+            />
             <Button size="icon" type="submit">
               <Search className="h-4 w-4 text-blue-500" />
             </Button>
@@ -112,7 +112,7 @@ if (
         </SheetContent>
       </Sheet>
 
-      <header className="sticky top-0 z-50 backdrop-blur-xl bg-black">
+      <header className="sticky top-0 z-50 backdrop-blur-xl bg-gradient-green-black-purple">
         {/* 🔹 TOP PROMO BAR */}
         <div
           className={`overflow-hidden transition-all duration-500 ${
@@ -132,22 +132,38 @@ if (
               <NirmatriLogo />
            
 
-            {/* DESKTOP SEARCH */}
-            <div className="hidden md:flex flex-1 justify-center">
-              <form action="/search" className="relative w-full max-w-xl">
-                <Input
-                  name="q"
-                  type="search"
-                  placeholder="Search handcrafted products..."
-                  className="h-9 pl-4 pr-11 rounded-full bg-white"
-                />
-                <Button
-                  size="icon"
-                  type="submit"
-                  className="absolute right-1 top-1/2 -translate-y-1/2 h-7 w-7 rounded-full"
-                >
-              <Search className="h-6 w-6 text-green-500" />
+            {/* 🔎 SEARCH (only on home) */}
+            {isHomePage && (
+              <div className="hidden md:flex flex-1 justify-center">
+                <form action="/search" className="relative w-full max-w-xl">
+                  <Input
+                    name="q"
+                    type="search"
+                    placeholder="Search handcrafted products..."
+                    className="h-9 pl-4 pr-11 rounded-full bg-white"
+                  />
+                  <Button
+                    size="icon"
+                    type="submit"
+                    className="absolute right-1 top-1/2 -translate-y-1/2 h-7 w-7 rounded-full"
+                  >
+                    <Search className="h-6 w-6 text-blue-500" />
+                  </Button>
+                </form>
+              </div>
+            )}
 
+            {/* 🔹 RIGHT SIDE */}
+            <div className="flex items-center gap-2 ml-auto">
+              {!isHomePage ? (
+                /* LANDING HEADER */
+                <Button
+                  variant="outline"
+                  className="h-8 px-3"
+                  onClick={() => router.push("/userauth/login")}
+                >
+                  <LogIn className="h-4 w-4 mr-2" />
+                  Login
                 </Button>
               </form>
             </div>
@@ -183,38 +199,16 @@ if (
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : (
-                /* 🟢 LOGGED-IN MODE */
+                /* HOME HEADER */
                 <>
-                
-                 
-<Button
-  variant="ghost"
-  size="icon"
-  className="relative rounded-full hover:bg-white/10"
-  onClick={() => router.push("/cart")} // ya sidebar open
->
-  {/* CART ICON */}
-  <ShoppingCart className="h-6 w-6 text-white" />
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => router.push("/cart")}
+                  >
+                    <ShoppingCart className="h-6 w-6 text-white" />
+                  </Button>
 
-  {/* BADGE */}
-  {cartCount > 0 && (
-    <span
-      className="
-        absolute -top-1 -right-1
-        h-5 min-w-[20px]
-        rounded-full
-        bg-orange-500
-        text-white text-[11px] font-bold
-        flex items-center justify-center
-        px-1
-      "
-    >
-      {cartCount}
-    </span>
-  )}
-</Button>
-
-                  {/* ✅ USER ICON → SIDEBAR */}
                   <Button
                     variant="ghost"
                     size="icon"
@@ -223,32 +217,10 @@ if (
                   >
                     <Menu className="h-5 w-5 text-white" />
                   </Button>
-
                 </>
               )}
             </div>
           </div>
-        </div>
-
-        {/* 🔹 MOBILE INLINE SEARCH */}
-        <div
-          ref={searchRef}
-          className={`md:hidden overflow-hidden transition-all duration-300 ${
-            mobileSearchOpen ? "max-h-20 px-4 pb-4" : "max-h-0"
-          }`}
-        >
-          <form action="/search" className="flex gap-2">
-            <Input
-              autoFocus
-              name="q"
-              type="search"
-              placeholder="Search products..."
-              className="flex-1 h-11 rounded-full bg-white"
-            />
-            <Button size="icon" type="submit">
-              <Search className="h-4 w-4 text-white" />
-            </Button>
-          </form>
         </div>
       </header>
     </>
