@@ -93,7 +93,7 @@ export function Header({ onUserClick }: HeaderProps) {
         </SheetContent>
       </Sheet>
 
-      <header className="sticky top-0 z-50 backdrop-blur-xl bg-black">
+      <header className="sticky top-0 z-50 backdrop-blur-xl bg-gradient-green-black-purple">
         {/* 🔹 TOP PROMO BAR */}
         <div
           className={`overflow-hidden transition-all duration-500 ${
@@ -146,6 +146,42 @@ export function Header({ onUserClick }: HeaderProps) {
                   <LogIn className="h-4 w-4 mr-2" />
                   Login
                 </Button>
+              </form>
+            </div>
+
+            {/* ACTIONS */}
+            <div className="flex items-center gap-2 ml-auto">
+              {/* MOBILE SEARCH ICON */}
+              <Button
+                variant="ghost"
+                size="icon"
+                className="md:hidden text-white"
+                onClick={() => setMobileSearchOpen((p) => !p)}
+              >
+                <Search className="h-6 w-6" />
+              </Button>
+
+              {!isLoggedIn ? (
+                /* 🔴 GUEST MODE */
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="outline" className="h-8 px-3 gap-1.5">
+                      <LogIn className="h-4 w-4" />
+                      Login
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuItem onClick={() => router.push("/userauth/login")}>
+                      Continue as User
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => router.push("/seller/login")}>
+                      Login as Seller
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => router.push("/userauth/login")}>
+                      Super Admin 
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               ) : (
                 /* HOME HEADER */
                 <>
