@@ -252,7 +252,7 @@ export default function ManageProductsPage() {
             </div>
 
             {/* Category Filter */}
-            <Select
+            <select
               value={selectedCategory}
               onChange={(e: any) => setSelectedCategory(e.target.value)}
               className="px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white bg-white dark:bg-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
@@ -261,10 +261,10 @@ export default function ManageProductsPage() {
               {categories.filter(c => c !== "all").map((cat) => (
                 <option key={cat} value={cat}>{cat}</option>
               ))}
-            </Select>
+            </select>
 
             {/* Status Filter */}
-            <Select
+            <select
               value={selectedStatus}
               onChange={(e: any) => setSelectedStatus(e.target.value)}
               className="px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white bg-white dark:bg-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
@@ -274,7 +274,7 @@ export default function ManageProductsPage() {
               <option value="lowstock">Low Stock</option>
               <option value="outofstock">Out of Stock</option>
               <option value="inactive">Inactive</option>
-            </Select>
+            </select>
 
             {/* View Mode Toggle */}
             <div className="flex gap-2">

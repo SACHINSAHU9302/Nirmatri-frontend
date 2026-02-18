@@ -22,6 +22,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/app/components/ui/dropdown-menu";
+import path from "path";
 
 /* 🔹 PROPS */
 type HeaderProps = {
@@ -84,7 +85,8 @@ const [cartCount, setCartCount] = useState<number>(0);
   /* ❌ LOGIN / AUTH PAGES PE HEADER HIDE */
 if (
   pathname.startsWith("/userauth") ||
-  pathname.startsWith("/seller")
+  pathname.startsWith("/seller") ||
+  pathname.startsWith("/superadmin")
 ) {
   return null;
 }
@@ -126,9 +128,9 @@ if (
         <div className="h-14">
           <div className="max-w-7xl mx-auto h-full px-4 flex items-center gap-3">
             {/* LOGO */}
-            <Link href="/" className="flex-shrink-0">
+          
               <NirmatriLogo />
-            </Link>
+           
 
             {/* DESKTOP SEARCH */}
             <div className="hidden md:flex flex-1 justify-center">
